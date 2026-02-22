@@ -87,4 +87,49 @@
 #   - Handle non-existing IDs.
 # - Keep the code clean and readable.
 
-print("Hello, World!")
+
+tasks = []
+
+
+while True:
+    print("1 - Add task")
+    print("2 - Show tasks")
+    print("3 - Delete task")
+    print("5 - Exit")
+
+
+    choice = input("Choose option: ")
+
+
+    if choice == "1":
+        task = input("Enter task: ")
+        tasks.append(task)
+        print("Task added!")
+
+    elif choice == "2":
+        if len(tasks) == 0:
+            print("No tasks jetzt.")
+        else:
+            print("Your tasks:")
+            for i in range(len(tasks)):
+                print(i + 1, "-", tasks[i])
+
+    elif choice == "3":
+        if len(tasks) == 0:
+            print("No tasks to delete.")
+        else:
+            number = int(input("Enter task number to delete: "))
+            if 1 <= number <= len(tasks):
+                tasks.pop(number - 1)
+                print("Task deleted!")
+            else:
+                print("Invalid number")
+
+    elif choice == "5":
+        print("Bye!")
+        break
+
+    else:
+        print("Invalid option")
+
+print("Hallo, Welt")
