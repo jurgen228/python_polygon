@@ -87,43 +87,81 @@
 #   - Handle non-existing IDs.
 # - Keep the code clean and readable.
 
+#   Structurize code by splitting it into several functions DONE
+#   Add list item status DONE                                  
+#   defend program from incorrect input attempts DONE
+#       zum Beispiel:
+#          Choose option 3            
+#               'abrakadabra'
+#   pull request machen
+#
+#
 
 tasks = []
 
 
-while True:
-    print("1 - Add task")
-    print("2 - Show tasks")
-    print("3 - Delete task")
-    print("5 - Exit")
 
+# functions
+def add_task(tasks):
+    task_text = input("Enter task: ")
+    task = {
+        "title": task_text,
+        "done": False
+    }
+    tasks.append(task)
+    print("Task added!")
 
-    choice = input("Choose option: ")
+def show_task(tasks):
+    if not tasks:
+        print("No tasks yet.")
+    else:
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task['title']} [{'v' if task['done'] else 'x'}]")
 
-
-    if choice == "1":
-        task = input("Enter task: ")
-        tasks.append(task)
-        print("Task added!")
-
-    elif choice == "2":
-        if len(tasks) == 0:
-            print("No tasks jetzt.")
-        else:
-            print("Your tasks:")
-            for i in range(len(tasks)):
-                print(i + 1, "-", tasks[i])
-
-    elif choice == "3":
-        if len(tasks) == 0:
-            print("No tasks to delete.")
-        else:
+def delete_task(tasks):
+    if not tasks:
+        print("No tasks to delete.")
+        return
+    while True:
+        try:
             number = int(input("Enter task number to delete: "))
             if 1 <= number <= len(tasks):
                 tasks.pop(number - 1)
                 print("Task deleted!")
+                break
             else:
-                print("Invalid number")
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number!")
+
+def mark_task_as_done(tasks):
+    show_task(tasks)
+    number = int(input("Enter task number: "))
+    tasks[number - 1]["done"] = True
+    print("Task completed!")
+
+while True:
+    if len(tasks) > 0:
+        print("")
+    print("1 - Add task")
+    print("2 - Show tasks")
+    print("3 - Delete task")
+    print("4 - Mark task as done")
+    print("5 - Exit")
+
+    choice = input("Choose option: ")
+
+    if choice == "1":
+        add_task(tasks)
+
+    elif choice == "2":
+        show_task(tasks)
+
+    elif choice == "3":
+        delete_task(tasks)
+
+    elif choice == "4":
+        mark_task_as_done(tasks)
 
     elif choice == "5":
         print("Bye!")
@@ -132,4 +170,4 @@ while True:
     else:
         print("Invalid option")
 
-print("Hallo, Welt")
+
