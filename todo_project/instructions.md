@@ -37,10 +37,12 @@ Each task must be a dictionary with:
 
 Example structure:
 
+```json
 [
-    {"id": 1, "title": "Buy milk", "done": False},
-    {"id": 2, "title": "Learn Python", "done": True}
+    {"id": 1, "title": "Buy milk", "done": false},
+    {"id": 2, "title": "Learn Python", "done": true}
 ]
+```
 
 IDs must be assigned automatically and incremented (1, 2, 3, ...).
 
