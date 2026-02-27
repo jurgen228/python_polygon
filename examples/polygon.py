@@ -39,6 +39,3 @@ try:
     print("Good boy")
 except RuntimeError as exception: 
     print("Zhalko maluka:", exception)
-
-
-    
