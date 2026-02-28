@@ -48,3 +48,7 @@ def pick_random_task(tasks, actions, objects):
         "done": False
     }  
     task_appender(tasks, task)
+
+def delete_random_task(tasks):
+    del_task = random.choice(tasks)
+    tasks.remove(del_task)
