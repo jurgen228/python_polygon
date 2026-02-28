@@ -3,8 +3,7 @@ from tasks import (
     show_task, 
     mark_task_as_done, 
     delete_task, 
-    pick_random_task,
-    delete_random_task
+    pick_random_task
 )
 from data import tasks, actions, objects
 
@@ -17,7 +16,6 @@ while True:
     print("4 - Mark task as done")
     print("5 - Pick random task")
     print("6 - Exit")
-    print("7 - Delete random task")
 
     choice = input("Choose option: ")
 
@@ -42,9 +40,6 @@ while True:
     elif choice == "6":
         print("Bye!")
         break
-
-    elif choice == "7":
-        delete_random_task(tasks)
 
     else:
         print("Invalid option")
