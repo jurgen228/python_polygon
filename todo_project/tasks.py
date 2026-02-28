@@ -1,23 +1,23 @@
 import random
 
-def task_appender(tasks, task):
-    tasks.append(task)
+def task_appender(list, task):
+    list.append(task)
 
-def add_task(tasks, task_text):
+def add_task(tasks):
+    task_text = input("Enter task: ")
     task = {
         "title": task_text,
         "done": False
     }
     task_appender(tasks, task)
+    print("Task added!")
 
 def show_task(tasks):
-    done = "v"
-    undone = "x"
     if not tasks:
         print("No tasks yet.")
     else:
         for i, task in enumerate(tasks, 1):
-            print(f"{i}. {task['title']} [{done if task['done'] else undone}]")
+            print(f"{i}. {task['title']} [{'v' if task['done'] else 'x'}]")
 
 def delete_task(tasks):
     if not tasks:
