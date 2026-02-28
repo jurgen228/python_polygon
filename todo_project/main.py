@@ -1,3 +1,5 @@
+import random
+
 from tasks import (
     add_task, 
     show_task, 

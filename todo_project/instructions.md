@@ -99,3 +99,7 @@ If there are no tasks, display:
          Choose option 3            
               'abrakadabra'
   pull request machen
+
+push 'delete random task' -> random task deleted
+
+push 'show random task' -> random task showed
