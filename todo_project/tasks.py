@@ -40,12 +40,15 @@ def mark_task_as_done(tasks):
     tasks[number - 1]["done"] = True
     print("Task completed!")
 
-def show_random_task(tasks):
-    if not tasks:
-        print("No tasks yet.")
-    else:
-        task = random.choice(tasks)
-        marker = "v" if task['done'] else "x"
-        print(f" {task['title']} [{marker}]")
- 
+def pick_random_task(tasks, actions, objects):
+    word1 = random.choice(actions)
+    word2 = random.choice(objects)
+    task = {
+        "title": word1 + " " + word2,
+        "done": False
+    }  
+    task_appender(tasks, task)
 
+def delete_random_task(tasks):
+    del_task = random.choice(tasks)
+    tasks.remove(del_task)
