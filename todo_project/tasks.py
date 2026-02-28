@@ -11,12 +11,13 @@ def add_task(tasks, task_text):
     task_appender(tasks, task)
 
 def show_task(tasks):
+    done = "v"
+    undone = "x"
     if not tasks:
         print("No tasks yet.")
     else:
         for i, task in enumerate(tasks, 1):
-            marker = "v" if task['done'] else "x"
-            print(f"{i}. {task['title']} [{marker}]")
+            print(f"{i}. {task['title']} [{done if task['done'] else undone}]")
 
 def delete_task(tasks):
     if not tasks:
