@@ -94,3 +94,9 @@
 #          Choose option 3            
 #               'abrakadabra'
 #   pull request machen
+
+#Think of a better algorithm of removing a task from the list.
+
+#But first please dive into how lists in python work. They are an implementation of a dynamic array concept.
+
+#Try to understand how appending and deletion of elements work under the hood.

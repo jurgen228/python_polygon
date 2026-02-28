@@ -19,21 +19,19 @@ def show_task(tasks):
         for i, task in enumerate(tasks, 1):
             print(f"{i}. {task['title']} [{done if task['done'] else undone}]")
 
-def delete_task(tasks):
+def delete_task(tasks, number=None):
     if not tasks:
         print("No tasks to delete.")
         return
-    while True:
-        try:
-            number = int(input("Enter task number to delete: "))
-            if 1 <= number <= len(tasks):
-                tasks.pop(number - 1)
-                print("Task deleted!")
-                break
-            else:
-                print("Invalid task number.")
-        except ValueError:
-            print("Please enter a valid number!")
+    try:
+        if number is None:
+            index = random.randrange(len(tasks))
+        else:
+            index = number - 1
+        deleted_task = tasks.pop(index)
+        print(f"Deleted task: {deleted_task}")
+    except (ValueError, IndexError):
+        print("Invalid task number.")
 
 def mark_task_as_done(tasks):
     show_task(tasks)
@@ -49,7 +47,3 @@ def pick_random_task(tasks, actions, objects):
         "done": False
     }  
     task_appender(tasks, task)
-
-def delete_random_task(tasks):
-    task_to_del = random.choice(tasks)
-    tasks.remove(task_to_del)

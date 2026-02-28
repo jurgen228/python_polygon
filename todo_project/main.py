@@ -4,7 +4,6 @@ from tasks import (
     mark_task_as_done, 
     delete_task, 
     pick_random_task,
-    delete_random_task
 )
 from data import tasks, actions, objects
 
@@ -40,7 +39,7 @@ while True:
         print(f"Random task added: {len(tasks)} - {tasks[-1]["title"]}")
 
     elif choice == "6":
-        delete_random_task(tasks)
+        delete_task(tasks)
 
     elif choice == "7":
         print("Bye!")
@@ -48,5 +47,3 @@ while True:
 
     else:
         print("Invalid option")
-
-
