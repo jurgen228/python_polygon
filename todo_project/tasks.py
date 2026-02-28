@@ -1,10 +1,15 @@
+import random
+
+def task_appender(list, task):
+    list.append(task)
+
 def add_task(tasks):
     task_text = input("Enter task: ")
     task = {
         "title": task_text,
         "done": False
     }
-    tasks.append(task)
+    task_appender(tasks, task)
     print("Task added!")
 
 def show_task(tasks):
@@ -35,3 +40,12 @@ def mark_task_as_done(tasks):
     number = int(input("Enter task number: "))
     tasks[number - 1]["done"] = True
     print("Task completed!")
+
+def pick_random_task(tasks, actions, objects):
+    word1 = random.choice(actions)
+    word2 = random.choice(objects)
+    task = {
+        "title": word1 + " " + word2,
+        "done": False
+    }  
+    task_appender(tasks, task)

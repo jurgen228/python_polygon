@@ -95,10 +95,11 @@
 #               'abrakadabra'
 #   pull request machen
 
-from tasks import add_task, show_task, mark_task_as_done, delete_task
+from tasks import add_task, show_task, mark_task_as_done, delete_task, pick_random_task
 
 tasks = []
-
+actions = ["Clean", "Buy", "Fix", "Organize", "Prepare", "Check", "Call", "Write", "Review", "Plan"]
+objects = ["the desk", "groceries", "the report", "emails", "the code", "documentation", "the meeting notes", "the kitchen", "the schedule", "the workspace"]
 # functions (moved to tasks.py)
 
 while True:
@@ -108,7 +109,8 @@ while True:
     print("2 - Show tasks")
     print("3 - Delete task")
     print("4 - Mark task as done")
-    print("5 - Exit")
+    print("5 - Pick random task")
+    print("6 - Exit")
 
     choice = input("Choose option: ")
 
@@ -123,6 +125,9 @@ while True:
 
     elif choice == "4":
         mark_task_as_done(tasks)
+
+    elif choice == "5":
+        pick_random_task(tasks, actions, objects)
 
     elif choice == "5":
         print("Bye!")
