@@ -1,3 +1,5 @@
+import random
+
 def task_appender(tasks, task):
     tasks.append(task)
 
@@ -37,3 +39,13 @@ def mark_task_as_done(tasks):
     number = int(input("Enter task number: "))
     tasks[number - 1]["done"] = True
     print("Task completed!")
+
+def show_random_task(tasks):
+    if not tasks:
+        print("No tasks yet.")
+    else:
+        task = random.choice(tasks)
+        marker = "v" if task['done'] else "x"
+        print(f" {task['title']} [{marker}]")
+ 
+
