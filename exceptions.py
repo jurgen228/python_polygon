@@ -4,4 +4,3 @@ try:
     print(first*second)
 except ValueError:
     print("ERROR: only integer input is allowed")
-
