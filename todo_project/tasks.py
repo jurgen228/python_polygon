@@ -18,21 +18,19 @@ def show_task(tasks):
             marker = "v" if task['done'] else "x"
             print(f"{i}. {task['title']} [{marker}]")
 
-def delete_task(tasks):
+def delete_task(tasks, task_number=None):
     if not tasks:
         print("No tasks to delete.")
         return
-    while True:
-        try:
-            number = int(input("Enter task number to delete: "))
-            if 1 <= number <= len(tasks):
-                tasks.pop(number - 1)
-                print("Task deleted!")
-                break
-            else:
-                print("Invalid task number.")
-        except ValueError:
-            print("Please enter a valid number!")
+    try:
+        if task_number is None:
+            index = random.randrange(len(tasks))
+        else:
+            index = task_number - 1
+        deleted_task = tasks.pop(index)
+        print(f"Deleted task: {deleted_task}")
+    except (ValueError, IndexError):
+        print("Invalid task number.")
 
 def mark_task_as_done(tasks):
     show_task(tasks)
@@ -49,6 +47,23 @@ def pick_random_task(tasks, actions, objects):
     }  
     task_appender(tasks, task)
 
+def delete_task_by_index(tasks, task_index):
+    if not tasks:
+        print("No tasks to delete.")
+        return
+    try:
+        tasks.pop(task_index)
+    except IndexError:
+        print("Invalid task index.")
+
+def delete_task_by_number(tasks, task_number):
+    task_index = task_number - 1
+    delete_task_by_index(tasks, task_index)
+
 def delete_random_task(tasks):
-    del_task = random.choice(tasks)
-    tasks.remove(del_task)
+    if not tasks:
+        print("No tasks to delete jetzt.")
+        return
+    else:
+        task_index = random.randrange(len(tasks))
+        delete_task_by_index(tasks, task_index)
